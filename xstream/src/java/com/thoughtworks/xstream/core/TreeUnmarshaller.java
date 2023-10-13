@@ -26,7 +26,6 @@ import com.thoughtworks.xstream.core.util.HierarchicalStreams;
 import com.thoughtworks.xstream.core.util.PrioritizedList;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import com.thoughtworks.xstream.mapper.Mapper;
-import com.thoughtworks.xstream.security.AbstractSecurityException;
 
 
 public class TreeUnmarshaller implements UnmarshallingContext {
@@ -75,8 +74,6 @@ public class TreeUnmarshaller implements UnmarshallingContext {
         } catch (final ConversionException conversionException) {
             addInformationTo(conversionException, type, converter, parent);
             throw conversionException;
-        } catch (AbstractSecurityException e) {
-            throw e;
         } catch (RuntimeException e) {
             ConversionException conversionException = new ConversionException(e);
             addInformationTo(conversionException, type, converter, parent);
